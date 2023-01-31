@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "networkInterfaces": [
+    {
+      "canInterface": {
+        "interfaceName": "can0",
+        "protocolName": "CAN",
+        "protocolVersion": "2.0A"
+      },
+      "interfaceId": "1",
+      "type": "canInterface"
+    },
+    {
+      "obdInterface": {
+        "interfaceName": "can0",
+        "obdStandard": "J1979",
+        "pidRequestIntervalSeconds": 5,
+        "dtcRequestIntervalSeconds": 5,
+        "broadcastRequests": true
+      },
+      "interfaceId": "0",
+      "type": "obdInterface"
+    }
+  ],
+  "staticConfig": {
+    "bufferSizes": {
+      "dtcBufferSize": 100,
+      "socketCANBufferSize": 10000,
+      "decodedSignalsBufferSize": 10000,
+      "rawCANFrameBufferSize": 10000
+    },
+    "threadIdleTimes": {
+      "inspectionThreadIdleTimeMs": 50,
+      "socketCANThreadIdleTimeMs": 50,
+      "canDecoderThreadIdleTimeMs": 50
+    },
+    "persistency": {
+      "persistencyPath": "/var/aws-iot-fleetwise/",
+      "persistencyPartitionMaxSize": 524288,
+      "persistencyUploadRetryIntervalMs": 10000
+    },
+    "internalParameters": {
+      "readyToPublishDataBufferSize": 10000,
+      "systemWideLogLevel": "Info",
+      "dataReductionProbabilityDisabled": false,
+      "useJsonBasedCollection": false,
+      "logColor": "Auto"
+    },
+    "publishToCloudParameters": {
+      "maxPublishMessageCount": 1000,
+      "collectionSchemeManagementCheckinIntervalMs": 5000
+    },
+    "mqttConnection": {
+      "endpointUrl": "a374reofkeuvxo-ats.iot.eu-central-1.amazonaws.com",
+      "clientId": "fwdemo",
+      "collectionSchemeListTopic": "$aws/iotfleetwise/vehicles/fwdemo/collection_schemes",
+      "decoderManifestTopic": "$aws/iotfleetwise/vehicles/fwdemo/decoder_manifests",
+      "canDataTopic": "$aws/iotfleetwise/vehicles/fwdemo/signals",
+      "checkinTopic": "$aws/iotfleetwise/vehicles/fwdemo/checkins",
+      "certificateFilename": "/etc/aws-iot-fleetwise/certificate.pem",
+      "privateKeyFilename": "/etc/aws-iot-fleetwise/private-key.key"
+    }
+  }
+} 
